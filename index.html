@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adeesha Beats | Future of Sri Lankan Sound</title>
+    <title>Adeesha Beats | Future Sound</title>
     <meta name="description" content="Official website of Adeesha Beats - Sri Lanka's premier Hip-Hop and Trap music producer.">
     
     <!-- Tailwind CSS -->
@@ -12,7 +12,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;600&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Montserrat:wght@400;700;800;900&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -27,24 +27,23 @@
                 extend: {
                     fontFamily: {
                         sans: ['Outfit', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
                         royal: ['Cinzel', 'serif'],
+                        mono: ['Space Grotesk', 'monospace'],
                     },
                     colors: {
-                        neon: {
-                            purple: '#b026ff',
-                            cyan: '#00f3ff',
-                            pink: '#ff0099',
-                            gold: '#ffd700'
-                        },
-                        dark: {
-                            bg: '#050505',
-                            card: '#0a0a0a',
-                            border: '#1f1f1f'
+                        brand: {
+                            purple: '#8B5CF6',
+                            pink: '#EC4899',
+                            dark: '#030305',
+                            card: '#0F0F11',
+                            accent: '#FF2E63',
+                            gold: '#FFD700'
                         }
                     },
                     backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'gradient-custom': 'linear-gradient(to right, #6d28d9, #be185d)',
+                        'gradient-dark': 'linear-gradient(to bottom, rgba(3,3,5,0.8), #030305)',
                     }
                 }
             }
@@ -52,342 +51,257 @@
     </script>
     <style>
         body {
-            background-color: #050505;
+            background-color: #030305;
             color: white;
             overflow-x: hidden;
         }
-        
+
+        /* Outline Text Effect */
+        .text-outline {
+            -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3);
+            color: transparent;
+            transition: all 0.3s ease;
+        }
+        .text-outline:hover {
+            -webkit-text-stroke: 2px rgba(255, 255, 255, 1);
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-track { background: #030305; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #b026ff; }
+        ::-webkit-scrollbar-thumb:hover { background: #EC4899; }
 
-        /* Glitch Effect Class */
-        .glitch-text {
-            position: relative;
-        }
-        .glitch-text::before, .glitch-text::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #050505;
-        }
-        .glitch-text::before {
-            left: 2px;
-            text-shadow: -1px 0 #ff00c1;
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim 5s infinite linear alternate-reverse;
-        }
-        .glitch-text::after {
-            left: -2px;
-            text-shadow: -1px 0 #00fff9;
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim2 5s infinite linear alternate-reverse;
-        }
-        
-        @keyframes glitch-anim {
-            0% { clip: rect(30px, 9999px, 10px, 0); }
-            20% { clip: rect(80px, 9999px, 90px, 0); }
-            40% { clip: rect(10px, 9999px, 50px, 0); }
-            60% { clip: rect(40px, 9999px, 20px, 0); }
-            80% { clip: rect(70px, 9999px, 100px, 0); }
-            100% { clip: rect(20px, 9999px, 60px, 0); }
-        }
-        @keyframes glitch-anim2 {
-            0% { clip: rect(10px, 9999px, 80px, 0); }
-            20% { clip: rect(60px, 9999px, 10px, 0); }
-            40% { clip: rect(90px, 9999px, 30px, 0); }
-            60% { clip: rect(20px, 9999px, 60px, 0); }
-            80% { clip: rect(50px, 9999px, 20px, 0); }
-            100% { clip: rect(80px, 9999px, 50px, 0); }
+        /* Floating Animation */
+        .float-anim { animation: float 6s ease-in-out infinite; }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
-        .glass-panel {
+        /* Glass Effect */
+        .glass {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .nav-link {
-            position: relative;
+        /* Form Input */
+        .input-glass {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s;
         }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: #00f3ff;
-            transition: width 0.3s;
-        }
-        .nav-link:hover::after {
-            width: 100%;
+        .input-glass:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #EC4899;
+            outline: none;
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.2);
         }
     </style>
 </head>
-<body class="antialiased selection:bg-neon-purple selection:text-white">
+<body class="antialiased">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-black/80 backdrop-blur-md border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex items-center justify-between h-20">
-                <a href="#" class="font-display font-bold text-2xl tracking-tighter text-white">
-                    ADEESHA<span class="text-neon-cyan">BEATS</span>.
-                </a>
-                
-                <div class="hidden md:flex items-center space-x-10">
-                    <a href="#home" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">HOME</a>
-                    <a href="#trending" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">TRENDING</a>
-                    <a href="#iconography" class="nav-link text-sm font-medium text-gray-300 hover:text-neon-gold transition-colors text-neon-gold">ICONOGRAPHY</a>
-                    <a href="#beats" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">BEATS</a>
-                    <a href="#contact" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition-colors">CONTACT</a>
-                </div>
+    <nav class="fixed w-full z-50 transition-all duration-300 py-6 px-6 md:px-12 flex justify-between items-center bg-gradient-to-b from-black/90 to-transparent backdrop-blur-sm">
+        <a href="#" class="flex items-center gap-2 group">
+            <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-black font-bold font-display text-xl group-hover:bg-brand-pink transition-colors">A</div>
+            <span class="font-display font-bold text-xl tracking-tight">ADEESHA<span class="text-brand-pink">BEATS</span></span>
+        </a>
 
-                <a href="#beats" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-black transition-all duration-200 bg-white hover:bg-neon-cyan hover:scale-105">
-                    GET BEATS
-                </a>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-8">
+            <a href="#home" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">HOME</a>
+            <a href="#trending" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">TRENDING</a>
+            <a href="#iconography" class="text-sm font-medium text-brand-gold hover:text-white transition-colors">ALBUMS</a>
+            <a href="#services" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">SERVICES</a>
+            <a href="#contact" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">CONTACT</a>
+        </div>
 
-                <!-- Mobile Menu Button -->
-                <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden text-white">
-                    <i data-lucide="menu" class="w-8 h-8"></i>
-                </button>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-white/10 p-4 absolute w-full z-50">
-            <div class="flex flex-col space-y-4">
-                <a href="#home" class="text-gray-300 hover:text-neon-cyan">Home</a>
-                <a href="#trending" class="text-gray-300 hover:text-neon-cyan">Trending</a>
-                <a href="#iconography" class="text-neon-gold hover:text-white">Iconography</a>
-                <a href="#beats" class="text-gray-300 hover:text-neon-cyan">Beats</a>
-                <a href="#contact" class="text-gray-300 hover:text-neon-cyan">Contact</a>
-            </div>
-        </div>
+        <!-- Mobile Menu Icon -->
+        <button class="md:hidden text-white hover:text-brand-pink transition-colors">
+            <i data-lucide="menu" class="w-8 h-8"></i>
+        </button>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <!-- Dynamic Background -->
+    <header id="home" class="relative min-h-[100vh] flex flex-col items-center justify-center pt-20 overflow-hidden">
+        
+        <!-- Background Image -->
         <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-dark-bg to-dark-bg z-10"></div>
-            <!-- REPLACE THIS IMAGE URL WITH ADEESHA'S REAL PHOTO -->
-            <img src="https://images.unsplash.com/photo-1598653222000-6b7b7a552625?q=80&w=2070&auto=format&fit=crop" 
-                 class="w-full h-full object-cover opacity-30 scale-105 animate-[pulse_10s_ease-in-out_infinite]"
-                 alt="Adeesha Beats Studio Background">
+            <img src="https://images.unsplash.com/photo-1571266028243-371695039980?q=80&w=2070&auto=format&fit=crop" 
+                 class="w-full h-full object-cover opacity-60"
+                 alt="Background">
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/40 via-brand-dark/70 to-brand-dark"></div>
         </div>
 
-        <div class="relative z-20 container mx-auto px-6 flex flex-col items-center text-center">
-            <div data-aos="fade-up" data-aos-duration="1000">
-                <span class="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-neon-cyan text-xs font-bold tracking-widest mb-6 backdrop-blur-sm">
-                    SRI LANKA'S NO.1 PRODUCER
-                </span>
-                <h1 class="font-display font-bold text-6xl md:text-8xl lg:text-9xl tracking-tighter leading-none mb-6 glitch-text" data-text="FUTURE SOUND">
-                    ADEESHA<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-cyan">Beats</span>
-                </h1>
-                <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto font-light mb-10 leading-relaxed">
-                    Crafting the next generation of <span class="text-white font-medium">Sri Lankan Trap, Drill & Hip-Hop</span>. 
-                    From Zee Major Studio to the world.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-5 justify-center">
-                    <button onclick="scrollToSection('beats')" class="group relative px-8 py-4 bg-neon-purple text-white font-bold font-display tracking-wide overflow-hidden hover:scale-105 transition-transform duration-300">
-                        <span class="relative z-10 flex items-center gap-2">LISTEN TO BEATS <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-                        <div class="absolute inset-0 bg-neon-pink transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
-                    </button>
-                    <button onclick="scrollToSection('contact')" class="px-8 py-4 border border-white/20 text-white font-bold font-display tracking-wide hover:bg-white hover:text-black transition-all duration-300">
-                        WORK WITH ME
-                    </button>
+        <div class="relative z-10 text-center w-full max-w-7xl mx-auto px-4">
+            <p class="text-brand-pink uppercase tracking-[0.3em] text-xs md:text-sm font-bold mb-4 animate-fade-in-up">Sri Lanka's No.1 Producer</p>
+            
+            <h1 class="font-display font-black text-6xl md:text-8xl lg:text-[10rem] leading-[0.85] tracking-tighter mb-6 select-none">
+                <span class="block text-outline opacity-80" data-aos="fade-down">ADEESHA</span>
+                <span class="block text-white" data-aos="fade-up" data-aos-delay="200">BEATS</span>
+            </h1>
+
+            <!-- Hero Floating Player -->
+            <div class="relative w-full max-w-3xl mx-auto mt-12" data-aos="zoom-in" data-aos-delay="400">
+                <div class="bg-gradient-custom rounded-2xl p-6 md:p-8 shadow-[0_20px_50px_rgba(190,24,93,0.3)] relative overflow-hidden glass border-none">
+                    <div class="relative z-10 flex flex-col md:flex-row items-center gap-6">
+                        <div class="w-20 h-20 md:w-24 md:h-24 rounded-lg bg-black shadow-lg overflow-hidden shrink-0 border border-white/20">
+                            <img src="https://img.youtube.com/vi/QIUu0qeHY1w/maxresdefault.jpg" alt="Now Playing" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex-1 w-full flex flex-col justify-center">
+                            <div class="flex justify-between items-end mb-3">
+                                <div class="text-left">
+                                    <h3 class="font-display font-bold text-white text-xl leading-none mb-1">KUDDAH (Reply Diss)</h3>
+                                    <p class="text-white/80 text-sm font-medium">Smokio • Prod. Adeesha Beats</p>
+                                </div>
+                                <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:scale-105 transition-transform text-brand-purple">
+                                    <i data-lucide="play" class="w-5 h-5 fill-current ml-1"></i>
+                                </button>
+                            </div>
+                            <div class="w-full h-1.5 bg-black/30 rounded-full overflow-hidden">
+                                <div class="h-full w-1/3 bg-white relative"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </header>
 
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-            <i data-lucide="chevrons-down" class="text-gray-500 w-6 h-6"></i>
-        </div>
-    </section>
-
-    <!-- NEW SECTION: Trending Songs -->
-    <section id="trending" class="py-24 bg-dark-bg border-b border-white/5">
+    <!-- Trending Section (Re-added) -->
+    <section id="trending" class="py-24 bg-brand-dark relative z-20">
         <div class="container mx-auto px-6">
             <div class="flex flex-col items-center text-center mb-16" data-aos="fade-up">
-                <span class="text-neon-pink text-sm font-bold tracking-widest uppercase mb-2">Viral on YouTube</span>
-                <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">TRENDING <span class="text-neon-cyan">NOW</span></h2>
-                <div class="w-24 h-1 bg-neon-purple rounded-full"></div>
+                <span class="text-brand-pink text-sm font-bold tracking-widest uppercase mb-2">Viral on YouTube</span>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">TRENDING <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple to-brand-pink">NOW</span></h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-                <!-- Video 1: KUDDAH -->
-                <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-dark-card hover:border-neon-pink/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,0,153,0.2)]" data-aos="fade-right">
+                <!-- Video 1 -->
+                <div class="group relative rounded-2xl overflow-hidden glass hover:border-brand-pink/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(236,72,153,0.2)]" data-aos="fade-right">
                     <div class="relative aspect-video">
                         <img src="https://img.youtube.com/vi/QIUu0qeHY1w/maxresdefault.jpg" alt="KUDDAH" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
-                        <a href="https://youtu.be/QIUu0qeHY1w?si=yWYY-_ZAnNRJWQ3v" target="_blank" class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all">
-                            <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                                <i data-lucide="play" class="fill-white text-white w-8 h-8 ml-1"></i>
+                        <a href="https://youtu.be/QIUu0qeHY1w" target="_blank" class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all">
+                            <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i data-lucide="play" class="fill-white text-white w-6 h-6 ml-1"></i>
                             </div>
                         </a>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold font-display mb-2">SMOKIO - KUDDAH (Reply Diss)</h3>
-                        <div class="flex items-center gap-4 text-sm text-gray-400">
-                            <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-4 h-4"></i> Latest Drop</span>
-                            <span class="flex items-center gap-1 text-neon-cyan"><i data-lucide="trending-up" class="w-4 h-4"></i> Trending #1</span>
-                        </div>
+                        <h3 class="text-2xl font-bold font-display mb-1">SMOKIO - KUDDAH</h3>
+                        <p class="text-gray-400 text-sm">Trending #1 • Produced by Adeesha</p>
                     </div>
                 </div>
 
-                <!-- Video 2: Usain Bolt -->
-                <div class="group relative rounded-2xl overflow-hidden border border-white/10 bg-dark-card hover:border-neon-cyan/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,243,255,0.2)]" data-aos="fade-left">
+                <!-- Video 2 -->
+                <div class="group relative rounded-2xl overflow-hidden glass hover:border-brand-purple/50 transition-all duration-500 hover:shadow-[0_0_30px_rgba(139,92,246,0.2)]" data-aos="fade-left">
                     <div class="relative aspect-video">
                         <img src="https://img.youtube.com/vi/-Zxr_46gXV0/maxresdefault.jpg" alt="Usain Bolt" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
-                        <a href="https://youtu.be/-Zxr_46gXV0?si=OiFLkFMHkHM6lmSM" target="_blank" class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all">
-                            <div class="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                                <i data-lucide="play" class="fill-white text-white w-8 h-8 ml-1"></i>
+                        <a href="https://youtu.be/-Zxr_46gXV0" target="_blank" class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-all">
+                            <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i data-lucide="play" class="fill-white text-white w-6 h-6 ml-1"></i>
                             </div>
                         </a>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold font-display mb-2">Usain Bolt - Pazi ft. Kevin Smokio</h3>
-                        <div class="flex items-center gap-4 text-sm text-gray-400">
-                            <span class="flex items-center gap-1"><i data-lucide="user" class="w-4 h-4"></i> Produced by Adeesha</span>
-                            <span class="flex items-center gap-1 text-neon-pink"><i data-lucide="flame" class="w-4 h-4"></i> Viral Hit</span>
-                        </div>
+                        <h3 class="text-2xl font-bold font-display mb-1">Usain Bolt - Pazi</h3>
+                        <p class="text-gray-400 text-sm">Viral Hit • Produced by Adeesha</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- NEW SECTION: FEATURED PROJECT - ICONOGRAPHY -->
-    <section id="iconography" class="py-24 relative overflow-hidden bg-black">
-        <!-- Golden Glow Background -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-neon-gold/5 blur-[150px] rounded-full pointer-events-none"></div>
+    <!-- Iconography Section (Re-added & Modernized) -->
+    <section id="iconography" class="py-24 relative overflow-hidden bg-black border-y border-white/5">
+        <!-- Gold Glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-gold/5 blur-[150px] rounded-full pointer-events-none"></div>
         
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col lg:flex-row items-center gap-16">
-                
-                <!-- Left Content: Album Art -->
+                <!-- Art -->
                 <div class="lg:w-1/2 relative" data-aos="zoom-in">
-                    <div class="relative aspect-square max-w-lg mx-auto rounded-xl overflow-hidden shadow-2xl shadow-neon-gold/20 border border-neon-gold/30 group">
-                        <!-- Placeholder for Album Art - Using an Abstract Gold/Black Image -->
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpZuv4A-772lRq5ULp2oqiXMZ8sdv8qIj2fQ&s" 
-                             alt="ICONOGRAPHY Album Art" 
-                             class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
-                        
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                        
+                    <div class="relative aspect-square max-w-lg mx-auto rounded-xl overflow-hidden shadow-[0_0_50px_rgba(255,215,0,0.1)] border border-brand-gold/20 group">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpZuv4A-772lRq5ULp2oqiXMZ8sdv8qIj2fQ&s" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute bottom-8 left-8">
-                            <h3 class="font-royal text-4xl text-neon-gold mb-2 tracking-widest drop-shadow-md">ICONOGRAPHY</h3>
-                            <p class="text-white font-display tracking-wider">RAMESSES REEZY</p>
+                            <h3 class="font-royal text-4xl text-brand-gold mb-1 tracking-widest drop-shadow-md">ICONOGRAPHY</h3>
+                            <p class="text-white font-display tracking-wider text-sm">RAMESSES REEZY</p>
                         </div>
-                    </div>
-                    <!-- Producer Tag -->
-                    <div class="absolute -bottom-6 -right-6 bg-dark-card border border-neon-gold/30 px-6 py-4 rounded-lg shadow-xl backdrop-blur-md hidden md:block">
-                        <p class="text-xs text-neon-gold uppercase tracking-[0.2em] mb-1">Executive Producer</p>
-                        <p class="text-xl font-bold font-display text-white">ADEESHA BEATS</p>
                     </div>
                 </div>
 
-                <!-- Right Content: Info -->
+                <!-- Tracklist -->
                 <div class="lg:w-1/2" data-aos="fade-up">
-                    <div class="inline-block px-3 py-1 border border-neon-gold/50 rounded-full text-neon-gold text-xs font-bold tracking-widest mb-6">
-                        FEATURED ALBUM
-                    </div>
-                    <h2 class="font-royal text-5xl md:text-6xl text-white mb-6 leading-tight">
-                        A SONIC <span class="text-neon-gold">MASTERPIECE</span>
-                    </h2>
-                    <p class="text-gray-300 text-lg leading-relaxed mb-8 font-light">
-                        <strong class="text-white">Iconography</strong> isn't just an album; it's a movement. 
-                        Produced entirely by Adeesha Beats, this project defines the new sound of Ramesses Reezy. 
-                        Blending cinematic textures with hard-hitting Trap percussion.
-                    </p>
-
-                    <!-- Tracklist Snippet -->
-                    <div class="space-y-4 mb-10">
-                        <div class="flex items-center gap-4 p-4 rounded-lg bg-white/5 border border-white/5 hover:border-neon-gold/50 transition-colors cursor-pointer group">
-                            <div class="w-8 h-8 flex items-center justify-center text-neon-gold font-bold font-display">01</div>
+                    <div class="inline-block px-3 py-1 border border-brand-gold/50 rounded-full text-brand-gold text-[10px] font-bold tracking-widest mb-6">FEATURED ALBUM</div>
+                    <h2 class="font-royal text-5xl md:text-6xl text-white mb-6 leading-tight">A SONIC <span class="text-brand-gold">MASTERPIECE</span></h2>
+                    
+                    <div class="space-y-3 mb-10">
+                        <!-- Track 1 -->
+                        <div class="flex items-center gap-4 p-4 rounded-lg glass hover:bg-white/5 hover:border-brand-gold/40 transition-all cursor-pointer group">
+                            <span class="text-brand-gold font-bold font-mono">01</span>
                             <div class="flex-1">
-                                <h4 class="text-white font-bold group-hover:text-neon-gold transition-colors">RAAWAYA</h4>
-                                <p class="text-xs text-gray-500">Prod. Adeesha Beats</p>
+                                <h4 class="text-white font-bold group-hover:text-brand-gold transition-colors">RAAWAYA</h4>
                             </div>
-                            <i data-lucide="play-circle" class="text-gray-500 group-hover:text-neon-gold"></i>
+                            <i data-lucide="play-circle" class="text-gray-500 group-hover:text-brand-gold"></i>
                         </div>
-                        <div class="flex items-center gap-4 p-4 rounded-lg bg-white/5 border border-white/5 hover:border-neon-gold/50 transition-colors cursor-pointer group">
-                            <div class="w-8 h-8 flex items-center justify-center text-neon-gold font-bold font-display">02</div>
+                        <!-- Track 2 -->
+                        <div class="flex items-center gap-4 p-4 rounded-lg glass hover:bg-white/5 hover:border-brand-gold/40 transition-all cursor-pointer group">
+                            <span class="text-brand-gold font-bold font-mono">02</span>
                             <div class="flex-1">
-                                <h4 class="text-white font-bold group-hover:text-neon-gold transition-colors">KAALAYA</h4>
-                                <p class="text-xs text-gray-500">Prod. Adeesha Beats</p>
+                                <h4 class="text-white font-bold group-hover:text-brand-gold transition-colors">KAALAYA</h4>
                             </div>
-                            <i data-lucide="play-circle" class="text-gray-500 group-hover:text-neon-gold"></i>
+                            <i data-lucide="play-circle" class="text-gray-500 group-hover:text-brand-gold"></i>
                         </div>
-                         <div class="flex items-center gap-4 p-4 rounded-lg bg-white/5 border border-white/5 hover:border-neon-gold/50 transition-colors cursor-pointer group">
-                            <div class="w-8 h-8 flex items-center justify-center text-neon-gold font-bold font-display">03</div>
+                         <!-- Track 3 -->
+                         <div class="flex items-center gap-4 p-4 rounded-lg glass hover:bg-white/5 hover:border-brand-gold/40 transition-all cursor-pointer group">
+                            <span class="text-brand-gold font-bold font-mono">03</span>
                             <div class="flex-1">
-                                <h4 class="text-white font-bold group-hover:text-neon-gold transition-colors">NIDAHASA</h4>
-                                <p class="text-xs text-gray-500">Prod. Adeesha Beats</p>
+                                <h4 class="text-white font-bold group-hover:text-brand-gold transition-colors">NIDAHASA</h4>
                             </div>
-                            <i data-lucide="play-circle" class="text-gray-500 group-hover:text-neon-gold"></i>
+                            <i data-lucide="play-circle" class="text-gray-500 group-hover:text-brand-gold"></i>
                         </div>
                     </div>
-
-                    <a href="https://www.youtube.com/watch?v=EhYeB53vi84&list=PLffsCzQCwQxytOn-7K89lzAkX2Scm1k9w&index=1" class="inline-flex items-center gap-3 px-8 py-4 bg-neon-gold text-black font-bold font-display tracking-wider hover:bg-yellow-400 transition-colors">
-                        STREAM ALBUM <i data-lucide="external-link" class="w-4 h-4"></i>
-                    </a>
+                    <button class="px-8 py-4 bg-brand-gold text-black font-bold font-display tracking-wider hover:bg-yellow-400 transition-colors">
+                        STREAM ALBUM
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About / Image Highlight Section -->
-    <section class="py-24 bg-dark-bg relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-neon-purple/5 blur-[120px] rounded-full pointer-events-none"></div>
+    <!-- About Section (Re-added & Modernized) -->
+    <section id="about" class="py-24 bg-brand-dark relative overflow-hidden">
         <div class="container mx-auto px-6 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div data-aos="fade-right">
-                    <!-- ADEESHA'S PORTRAIT CONTAINER -->
                     <div class="relative group">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-neon-cyan to-neon-purple opacity-30 group-hover:opacity-100 blur transition duration-500"></div>
-                        <div class="relative aspect-[4/5] overflow-hidden bg-dark-card border border-white/10">
-                            <!-- REPLACE THE URL BELOW WITH ADEESHA'S PORTRAIT -->
+                        <div class="absolute -inset-1 bg-gradient-to-r from-brand-purple to-brand-pink opacity-30 group-hover:opacity-100 blur transition duration-500"></div>
+                        <div class="relative aspect-[4/5] overflow-hidden rounded-lg">
                             <img src="https://yt3.googleusercontent.com/dbzdIxkMls45oj8b6bL7-GUwdDgBnwAGuGWMd4d1lzCtMKgiXRC2_B1ab_leTF8jjgWCN8Aq=s900-c-k-c0x00ffffff-no-rj" 
-                                 alt="Adeesha Beats Portrait" 
-                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0">
-                        </div>
-                        <!-- Floating Badge -->
-                        <div class="absolute -bottom-6 -right-6 bg-black border border-white/10 p-4 backdrop-blur-xl">
-                            <div class="text-4xl font-display font-bold text-white">10M+</div>
-                            <div class="text-xs text-gray-400 uppercase tracking-widest">Streams Worldwide</div>
+                                 class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
                         </div>
                     </div>
                 </div>
                 
                 <div data-aos="fade-left">
                     <h2 class="font-display text-4xl md:text-6xl font-bold mb-8 leading-tight">
-                        THE ARCHITECT OF <br>
-                        <span class="text-neon-cyan">THE NEW WAVE</span>
+                        ARCHITECT OF <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple to-brand-pink">THE NEW WAVE</span>
                     </h2>
-                    <p class="text-gray-400 mb-6 text-lg leading-relaxed">
-                        Based in Sri Lanka, Adeesha Beats has become the go-to producer for the island's most aggressive and melodious sounds. Collaborating with heavyweights like <span class="text-white font-medium">Kevin Smokio, Costa, and Sankha B</span>, his sound defines the modern era of Sinhala Rap.
-                    </p>
-                    <p class="text-gray-400 mb-10 text-lg leading-relaxed">
-                        "Music isn't just about the beat; it's about the emotion behind the drop. Every track I produce tells a story before the artist even speaks."
+                    <p class="text-gray-400 mb-6 text-lg leading-relaxed font-light">
+                        Based in Sri Lanka, Adeesha Beats has become the go-to producer for the island's most aggressive and melodious sounds. Collaborating with heavyweights like <span class="text-white font-medium">Kevin Smokio, Costa, and Sankha B</span>.
                     </p>
                     
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="glass-panel p-6">
-                            <i data-lucide="audio-waveform" class="text-neon-purple w-8 h-8 mb-4"></i>
-                            <h3 class="font-bold text-white mb-1">Signature Sound</h3>
+                    <div class="grid grid-cols-2 gap-6 mt-8">
+                        <div class="glass p-6 rounded-xl">
+                            <h3 class="font-bold text-white text-lg mb-1">Signature Sound</h3>
                             <p class="text-sm text-gray-500">Dark melodic trap & heavy 808s.</p>
                         </div>
-                        <div class="glass-panel p-6">
-                            <i data-lucide="award" class="text-neon-cyan w-8 h-8 mb-4"></i>
-                            <h3 class="font-bold text-white mb-1">Industry Standard</h3>
+                        <div class="glass p-6 rounded-xl">
+                            <h3 class="font-bold text-white text-lg mb-1">Industry Standard</h3>
                             <p class="text-sm text-gray-500">Top-tier mixing & mastering.</p>
                         </div>
                     </div>
@@ -396,67 +310,64 @@
         </div>
     </section>
 
-    <!-- Services -->
-    <section id="services" class="py-24 bg-dark-card border-y border-white/5">
+    <!-- Services Section (Re-added) -->
+    <section id="services" class="py-24 bg-black border-t border-white/5">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="font-display text-4xl font-bold mb-4">STUDIO <span class="text-neon-cyan">SERVICES</span></h2>
-                <div class="w-24 h-1 bg-neon-purple mx-auto"></div>
+                <h2 class="font-display text-4xl font-bold text-white">STUDIO <span class="text-brand-purple">SERVICES</span></h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Service 1 -->
-                <div class="p-8 border border-white/5 hover:border-neon-cyan/30 bg-black/40 transition-all hover:-translate-y-2 group" data-aos="fade-up">
-                    <i data-lucide="mic-2" class="w-10 h-10 text-gray-500 group-hover:text-neon-cyan mb-6 transition-colors"></i>
+                <div class="glass p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group" data-aos="fade-up">
+                    <div class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center mb-6 group-hover:bg-brand-pink group-hover:text-white transition-colors text-gray-400">
+                        <i data-lucide="mic-2" class="w-7 h-7"></i>
+                    </div>
                     <h3 class="text-xl font-bold text-white mb-3">Vocal Recording</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Industry standard recording environment with top-tier preamps (Avalon/Neve) and microphones.
-                    </p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Top-tier preamps (Avalon/Neve) and microphones for industry standard vocals.</p>
                 </div>
                  <!-- Service 2 -->
-                 <div class="p-8 border border-white/5 hover:border-neon-purple/30 bg-black/40 transition-all hover:-translate-y-2 group" data-aos="fade-up" data-aos-delay="100">
-                    <i data-lucide="sliders" class="w-10 h-10 text-gray-500 group-hover:text-neon-purple mb-6 transition-colors"></i>
+                 <div class="glass p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center mb-6 group-hover:bg-brand-purple group-hover:text-white transition-colors text-gray-400">
+                        <i data-lucide="sliders" class="w-7 h-7"></i>
+                    </div>
                     <h3 class="text-xl font-bold text-white mb-3">Mixing & Mastering</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Turn your rough demo into a radio-ready hit. Crisp vocals, hard-hitting drums, and competitive loudness.
-                    </p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Crisp vocals, hard-hitting drums, and competitive loudness for radio.</p>
                 </div>
                  <!-- Service 3 -->
-                 <div class="p-8 border border-white/5 hover:border-neon-cyan/30 bg-black/40 transition-all hover:-translate-y-2 group" data-aos="fade-up" data-aos-delay="200">
-                    <i data-lucide="music" class="w-10 h-10 text-gray-500 group-hover:text-neon-cyan mb-6 transition-colors"></i>
+                 <div class="glass p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center mb-6 group-hover:bg-brand-gold group-hover:text-black transition-colors text-gray-400">
+                        <i data-lucide="music" class="w-7 h-7"></i>
+                    </div>
                     <h3 class="text-xl font-bold text-white mb-3">Beat Production</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">
-                        Custom beats made from scratch to fit your voice and style. Exclusive rights available.
-                    </p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Custom beats made from scratch to fit your voice and style.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form -->
-    <section id="contact" class="py-24 relative overflow-hidden">
-        <div class="absolute inset-0 bg-black z-0"></div>
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 z-0"></div>
-        
+    <!-- Contact Section (Re-added) -->
+    <section id="contact" class="py-24 relative bg-brand-dark">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
         <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-2xl mx-auto bg-dark-card/80 backdrop-blur-lg border border-white/10 p-8 md:p-12">
-                <h2 class="font-display text-3xl font-bold mb-2 text-center">LET'S WORK</h2>
+            <div class="max-w-2xl mx-auto glass p-8 md:p-12 rounded-2xl shadow-2xl">
+                <h2 class="font-display text-3xl font-bold mb-2 text-center text-white">LET'S WORK</h2>
                 <p class="text-center text-gray-400 mb-8 text-sm">Fill out the form below for serious inquiries only.</p>
 
                 <form class="space-y-4">
                     <div class="grid grid-cols-2 gap-4">
-                        <input type="text" placeholder="Name" class="w-full bg-black border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-neon-purple transition-colors text-sm">
-                        <input type="email" placeholder="Email" class="w-full bg-black border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-neon-purple transition-colors text-sm">
+                        <input type="text" placeholder="Name" class="w-full px-4 py-4 rounded-lg input-glass placeholder-gray-500 text-sm">
+                        <input type="email" placeholder="Email" class="w-full px-4 py-4 rounded-lg input-glass placeholder-gray-500 text-sm">
                     </div>
-                    <select class="w-full bg-black border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-neon-purple transition-colors text-sm text-gray-400">
+                    <select class="w-full px-4 py-4 rounded-lg input-glass text-gray-400 text-sm">
                         <option>Select Service</option>
                         <option>Exclusive Beat</option>
                         <option>Mixing/Mastering</option>
                         <option>Studio Session</option>
                     </select>
-                    <textarea rows="4" placeholder="Tell me about your project..." class="w-full bg-black border border-white/10 px-4 py-3 text-white focus:outline-none focus:border-neon-purple transition-colors text-sm"></textarea>
+                    <textarea rows="4" placeholder="Tell me about your project..." class="w-full px-4 py-4 rounded-lg input-glass placeholder-gray-500 text-sm"></textarea>
                     
-                    <button class="w-full bg-neon-purple hover:bg-purple-600 text-white font-bold py-4 text-sm tracking-widest transition-colors">
+                    <button class="w-full py-4 bg-brand-purple hover:bg-purple-600 text-white font-bold tracking-widest transition-colors rounded-lg shadow-lg shadow-purple-900/50">
                         SEND MESSAGE
                     </button>
                 </form>
@@ -465,95 +376,30 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black py-10 border-t border-white/5 text-center">
-        <div class="flex justify-center space-x-6 mb-6">
-            <a href="#" class="text-gray-500 hover:text-white transition-colors"><i data-lucide="instagram"></i></a>
-            <a href="#" class="text-gray-500 hover:text-white transition-colors"><i data-lucide="youtube"></i></a>
-            <a href="#" class="text-gray-500 hover:text-white transition-colors"><i data-lucide="facebook"></i></a>
-            <a href="#" class="text-gray-500 hover:text-white transition-colors"><i data-lucide="mail"></i></a>
+    <footer class="bg-black py-12 border-t border-white/5">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <a href="#" class="font-display font-bold text-xl tracking-tight text-white">ADEESHA<span class="text-brand-pink">BEATS</span></a>
+                <p class="text-gray-600 text-xs mt-2">© 2026 Future Sound of Sri Lanka.</p>
+            </div>
+            
+            <div class="flex gap-6">
+                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-brand-pink hover:scale-110 transition-all">
+                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-red-600 hover:scale-110 transition-all">
+                    <i data-lucide="youtube" class="w-5 h-5"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-blue-600 hover:scale-110 transition-all">
+                    <i data-lucide="facebook" class="w-5 h-5"></i>
+                </a>
+            </div>
         </div>
-        <p class="text-gray-600 text-xs uppercase tracking-widest">© 2026 Adeesha Beats. All Rights Reserved.</p>
     </footer>
 
-    <!-- Persistent Music Player -->
-    <div id="sticky-player" class="fixed bottom-0 left-0 w-full bg-black/90 backdrop-blur-xl border-t border-white/10 p-4 transform translate-y-full transition-transform duration-500 z-50">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <div class="flex items-center gap-4">
-                <img id="player-img" src="" class="w-12 h-12 object-cover bg-gray-800 hidden md:block">
-                <div>
-                    <h4 id="player-title" class="text-white font-bold text-sm">Select a track</h4>
-                    <p id="player-artist" class="text-gray-400 text-xs">Adeesha Beats</p>
-                </div>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <button class="text-gray-400 hover:text-white"><i data-lucide="skip-back" class="w-5 h-5"></i></button>
-                <button id="play-pause-btn" class="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:scale-105 transition-transform">
-                    <i data-lucide="play" class="w-5 h-5 fill-black text-black ml-1"></i>
-                </button>
-                <button class="text-gray-400 hover:text-white"><i data-lucide="skip-forward" class="w-5 h-5"></i></button>
-            </div>
-
-            <div class="hidden md:flex items-center gap-2 w-1/4">
-                <i data-lucide="volume-2" class="text-gray-400 w-4 h-4"></i>
-                <div class="h-1 bg-gray-700 w-full rounded-full">
-                    <div class="h-full bg-white w-2/3 rounded-full"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Initialize Icons
         lucide.createIcons();
-
-        // Initialize AOS (Animate on Scroll)
-        AOS.init({
-            once: true,
-            offset: 100,
-            duration: 800,
-        });
-
-        // Smooth Scroll
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Music Player Logic
-        const player = document.getElementById('sticky-player');
-        const playerTitle = document.getElementById('player-title');
-        const playerArtist = document.getElementById('player-artist');
-        const playerImg = document.getElementById('player-img');
-        const playPauseBtn = document.getElementById('play-pause-btn');
-        let isPlaying = false;
-
-        function playTrack(title, artist, imgUrl) {
-            // Show player if hidden
-            player.classList.remove('translate-y-full');
-            
-            // Update Info
-            playerTitle.textContent = title;
-            playerArtist.textContent = artist;
-            playerImg.src = imgUrl;
-
-            // Simulate Play State
-            isPlaying = true;
-            updatePlayButton();
-        }
-
-        playPauseBtn.addEventListener('click', () => {
-            isPlaying = !isPlaying;
-            updatePlayButton();
-        });
-
-        function updatePlayButton() {
-            if(isPlaying) {
-                playPauseBtn.innerHTML = '<i data-lucide="pause" class="w-5 h-5 fill-black text-black"></i>';
-            } else {
-                playPauseBtn.innerHTML = '<i data-lucide="play" class="w-5 h-5 fill-black text-black ml-1"></i>';
-            }
-            lucide.createIcons();
-        }
+        AOS.init({ once: true, offset: 50 });
     </script>
 </body>
 </html>

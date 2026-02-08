@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Studio | Adeesha Beats</title>
+    <meta name="description" content="Book your studio session with Adeesha Beats.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Montserrat:wght@400;700;800;900&family=Cinzel:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                        royal: ['Cinzel', 'serif'],
+                        mono: ['Space Grotesk', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#2563EB',
+                            red: '#DC2626',
+                            dark: '#030305',
+                            card: '#0F0F11',
+                            accent: '#FF0000',
+                            gold: '#FFD700'
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-custom': 'linear-gradient(to right, #1d4ed8, #b91c1c)',
+                        'gradient-dark': 'linear-gradient(to bottom, rgba(3,3,5,0.8), #030305)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #030305;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Glass Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Form Input */
+        .input-glass {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .input-glass:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #DC2626;
+            outline: none;
+            box-shadow: 0 0 15px rgba(220, 38, 38, 0.2);
+        }
+
+        /* Calendar Input Dark Mode Fix */
+        ::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav
+        class="w-full py-6 px-6 md:px-12 flex justify-between items-center bg-black/50 backdrop-blur-sm border-b border-white/5">
+        <a href="index.html" class="flex items-center gap-2 group">
+            <div
+                class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-black font-bold font-display text-xl group-hover:bg-brand-red transition-colors">
+                A</div>
+            <span class="font-display font-bold text-xl tracking-tight">ADEESHA<span
+                    class="text-brand-red">BEATS</span></span>
+        </a>
+        <a href="index.html"
+            class="flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-white transition-colors">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i> BACK TO HOME
+        </a>
+    </nav>
+
+    <!-- Booking Section -->
+    <main class="flex-grow flex items-center justify-center relative py-12 px-4">
+
+        <!-- Background Elements -->
+        <div class="absolute inset-0 z-0 overflow-hidden">
+            <div
+                class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-brand-blue/10 rounded-full blur-[120px] pointer-events-none">
+            </div>
+            <div
+                class="absolute bottom-[-10%] right-[-10%] w-[40vw] h-[40vw] bg-brand-red/10 rounded-full blur-[120px] pointer-events-none">
+            </div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-lg" data-aos="fade-up">
+            <div class="text-center mb-8">
+                <p class="text-brand-red font-bold tracking-[0.2em] text-xs mb-2">STUDIO SESSIONS</p>
+                <h1 class="font-display font-bold text-3xl md:text-4xl">BOOK YOUR <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-red">SESSION</span>
+                </h1>
+            </div>
+
+            <div class="glass p-8 rounded-2xl border border-white/10 shadow-2xl">
+                <form id="bookingForm" onsubmit="sendToWhatsapp(event)" class="space-y-5">
+
+                    <!-- Name -->
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">Artist Name</label>
+                        <div class="relative">
+                            <i data-lucide="user"
+                                class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500"></i>
+                            <input type="text" id="name" required placeholder="Enter your name"
+                                class="w-full pl-12 pr-4 py-4 rounded-xl input-glass placeholder-gray-600 text-sm focus:bg-white/5">
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">WhatsApp
+                            Number</label>
+                        <div class="relative">
+                            <i data-lucide="phone"
+                                class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500"></i>
+                            <input type="tel" id="phone" required placeholder="077xxxxxxx"
+                                class="w-full pl-12 pr-4 py-4 rounded-xl input-glass placeholder-gray-600 text-sm focus:bg-white/5">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Date -->
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">Date</label>
+                            <input type="date" id="date" required
+                                class="w-full px-4 py-4 rounded-xl input-glass text-sm text-gray-300 focus:bg-white/5">
+                        </div>
+
+                        <!-- Time -->
+                        <div class="space-y-1">
+                            <label class="text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">Time</label>
+                            <input type="time" id="time" required
+                                class="w-full px-4 py-4 rounded-xl input-glass text-sm text-gray-300 focus:bg-white/5">
+                        </div>
+                    </div>
+
+                    <!-- Service Type -->
+                    <div class="space-y-1">
+                        <label class="text-xs font-bold text-gray-400 uppercase tracking-wider ml-1">Service
+                            Type</label>
+                        <div class="relative">
+                            <i data-lucide="music-2"
+                                class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500"></i>
+                            <select id="service"
+                                class="w-full pl-12 pr-4 py-4 rounded-xl input-glass text-sm text-gray-300 focus:bg-white/5 appearance-none cursor-pointer">
+                                <option class="bg-brand-card" value="Vocal Recording">Vocal Recording</option>
+                                <option class="bg-brand-card" value="Beat Production">Beat Production</option>
+                                <option class="bg-brand-card" value="Mixing & Mastering">Mixing & Mastering</option>
+                                <option class="bg-brand-card" value="Full Album Project">Full Album Project</option>
+                            </select>
+                            <i data-lucide="chevron-down"
+                                class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"></i>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="w-full py-4 mt-4 bg-gradient-to-r from-brand-blue to-brand-red hover:brightness-110 text-white font-bold font-display tracking-widest rounded-xl shadow-lg shadow-brand-red/20 transition-all transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 group">
+                        <span>BOOK STUDIO SESSION</span>
+                        <i data-lucide="send" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+
+                    <p class="text-center text-xs text-gray-500 mt-4">
+                        By clicking book, you will be redirected to WhatsApp to confirm your slot.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+        AOS.init({ once: true });
+
+        function sendToWhatsapp(e) {
+            e.preventDefault();
+
+            // 1. Get Values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const service = document.getElementById('service').value;
+
+            // 2. Format Date
+            const dateObj = new Date(date);
+            const formattedDate = dateObj.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+            // 3. Convert Time to AM/PM
+            const [hours, minutes] = time.split(':');
+            let ampm = hours >= 12 ? 'PM' : 'AM';
+            let hours12 = hours % 12;
+            hours12 = hours12 ? hours12 : 12; // the hour '0' should be '12'
+            const formattedTime = hours12 + ':' + minutes + ' ' + ampm;
+
+            // 4. Create Receipt Message
+            const message = `
+🧾 *ADEESHA BEATS STUDIO BOOKING*
+--------------------------------
+👤 *Artist Name:* ${name}
+📱 *Contact:* ${phone}
+📅 *Date:* ${formattedDate}
+⏰ *Time:* ${formattedTime}
+🎛 *Service:* ${service}
+--------------------------------
+🔴 *Status:* _Pending Confirmation_
+Please confirm this slot. Thank you!
+            `.trim();
+
+            // 5. Encode and Open WhatsApp
+            // Number: 94774010347 (Sri Lanka code 94, remove leading 0)
+            const whatsappNumber = "94774010347";
+            const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+
+</html>
